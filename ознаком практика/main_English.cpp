@@ -11,54 +11,52 @@ struct aircraft{
     int airfield;
 };
 /***************************************************************************************/
-/*                                    Т Е С Т Ы                                        */
+/*                                    Рў Р• РЎ Рў Р«                                        */
 /***************************************************************************************/
-//test0.txt - файл отсутствует
-//test1.txt - пустой
-//test2.txt - все 24 корректные 
-//test3.txt - все 15 корректные 
-//test4.txt - все 11 корректные
-//test5.txt - только 1 самолет
-//test6.txt - мусор + 1 самолет
-//test7.txt - 7 некорректных, пустая строка,  4 корректных
-//test8.txt - все 5 ошибки
-//test9.txt - 2 кор + 5 некор
-//test10.txt - пустые строки и мусор
-//test11.txt - нехватка полей+кор+некор
-//test12.txt - присутсвуют русские буквы+кор
-//test13.txt - 1 аэродром(сортировка времени)
-//test14.txt - ошибка времени везде
-//test15.txt - ошибка марки везде
-//test16.txt - ошибка номера везде(случаи 'O' вместо 0)
-//test17.txt - ошибка аэродрома везде (случай 'З' вместо 3)
-//test18.txt - 1 ошибка борт копия + 42 корректных
-//test19.txt - на запас, если что то надо исправить
-//test20.txt - на запас, если что то надо исправить
+//test0.txt - С„Р°Р№Р» РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
+//test1.txt - РїСѓСЃС‚РѕР№
+//test2.txt - РІСЃРµ 24 РєРѕСЂСЂРµРєС‚РЅС‹Рµ 
+//test3.txt - РІСЃРµ 15 РєРѕСЂСЂРµРєС‚РЅС‹Рµ 
+//test4.txt - РІСЃРµ 11 РєРѕСЂСЂРµРєС‚РЅС‹Рµ
+//test5.txt - С‚РѕР»СЊРєРѕ 1 СЃР°РјРѕР»РµС‚
+//test6.txt - РјСѓСЃРѕСЂ + 1 СЃР°РјРѕР»РµС‚
+//test7.txt - 7 РЅРµРєРѕСЂСЂРµРєС‚РЅС‹С…, РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°,  4 РєРѕСЂСЂРµРєС‚РЅС‹С…
+//test8.txt - РІСЃРµ 5 РѕС€РёР±РєРё
+//test9.txt - 2 РєРѕСЂ + 5 РЅРµРєРѕСЂ
+//test10.txt - РїСѓСЃС‚С‹Рµ СЃС‚СЂРѕРєРё Рё РјСѓСЃРѕСЂ
+//test11.txt - РЅРµС…РІР°С‚РєР° РїРѕР»РµР№+РєРѕСЂ+РЅРµРєРѕСЂ
+//test12.txt - РїСЂРёСЃСѓС‚СЃРІСѓСЋС‚ СЂСѓСЃСЃРєРёРµ Р±СѓРєРІС‹+РєРѕСЂ
+//test13.txt - 1 Р°СЌСЂРѕРґСЂРѕРј(СЃРѕСЂС‚РёСЂРѕРІРєР° РІСЂРµРјРµРЅРё)
+//test14.txt - РѕС€РёР±РєР° РІСЂРµРјРµРЅРё РІРµР·РґРµ
+//test15.txt - РѕС€РёР±РєР° РјР°СЂРєРё РІРµР·РґРµ
+//test16.txt - РѕС€РёР±РєР° РЅРѕРјРµСЂР° РІРµР·РґРµ(СЃР»СѓС‡Р°Рё 'O' РІРјРµСЃС‚Рѕ 0)
+//test17.txt - РѕС€РёР±РєР° Р°СЌСЂРѕРґСЂРѕРјР° РІРµР·РґРµ (СЃР»СѓС‡Р°Р№ 'Р—' РІРјРµСЃС‚Рѕ 3)
+//test18.txt - 1 РѕС€РёР±РєР° Р±РѕСЂС‚ РєРѕРїРёСЏ + 42 РєРѕСЂСЂРµРєС‚РЅС‹С…
+//test19.txt - РЅР° Р·Р°РїР°СЃ, РµСЃР»Рё С‡С‚Рѕ С‚Рѕ РЅР°РґРѕ РёСЃРїСЂР°РІРёС‚СЊ
+//test20.txt - РЅР° Р·Р°РїР°СЃ, РµСЃР»Рё С‡С‚Рѕ С‚Рѕ РЅР°РґРѕ РёСЃРїСЂР°РІРёС‚СЊ
 
 const string FILENAME = "test1.txt";
 /***************************************************************************************/
-/*                         П Р О Т О Т И П Ы    Ф У Н К Ц И Й                          */
+/*                         Рџ Р  Рћ Рў Рћ Рў Р Рџ Р«    Р¤ РЈ Рќ Рљ Р¦ Р Р™                          */
 /***************************************************************************************/
-void errors(int er);//определение типа ошибок
-bool isValidTime(const string&time); //проверка времени
-bool isValidNumber(const string&number);//проверка номера
-bool isValidModel(const string&model);//проверка модели
-bool isValidAirfield(const int & airfield); //проверка посадки
-void sorted(aircraft* planes,int count, int ind[]);//сортировка
-int openfile(aircraft*&planes);//открытие файла
-void printTable(aircraft* planes, int count,int* ind);//печать исходных данных
-bool isUniqueNumber(aircraft* temp, int count, const string& number, const string& model);//уникальность ботового номера
+void errors(int er);//РѕРїСЂРµРґРµР»РµРЅРёРµ С‚РёРїР° РѕС€РёР±РѕРє
+bool isValidTime(const string&time); //РїСЂРѕРІРµСЂРєР° РІСЂРµРјРµРЅРё
+bool isValidNumber(const string&number);//РїСЂРѕРІРµСЂРєР° РЅРѕРјРµСЂР°
+bool isValidModel(const string&model);//РїСЂРѕРІРµСЂРєР° РјРѕРґРµР»Рё
+bool isValidAirfield(const int & airfield); //РїСЂРѕРІРµСЂРєР° РїРѕСЃР°РґРєРё
+void sorted(aircraft* planes,int count, int ind[]);//СЃРѕСЂС‚РёСЂРѕРІРєР°
+int openfile(aircraft*&planes);//РѕС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р°
+void printTable(aircraft* planes, int count,int* ind);//РїРµС‡Р°С‚СЊ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С…
+bool isUniqueNumber(aircraft* temp, int count, const string& number, const string& model);//СѓРЅРёРєР°Р»СЊРЅРѕСЃС‚СЊ Р±РѕС‚РѕРІРѕРіРѕ РЅРѕРјРµСЂР°
 
 /***************************************************************************************/
-/*                         О С Н О В Н А Я     П Р О Г Р А М М А                       */
+/*                         Рћ РЎ Рќ Рћ Р’ Рќ Рђ РЇ     Рџ Р  Рћ Р“ Р  Рђ Рњ Рњ Рђ                       */
 /***************************************************************************************/
 int main(){
-    setlocale(LC_ALL,"rus");
-
     aircraft * planes = nullptr;
     int count = openfile(planes);
     if (count == 0){
-        cout<<"Нет данных";
+        cout<<"No data";
         delete[] planes;
         return 1;
     }
@@ -70,27 +68,28 @@ int main(){
     return 0;
 }
 /***************************************************************************************/
-/*                         Р Е А Л И З А Ц И Я    Ф У Н К Ц И Й                       */
+/*                         Р  Р• Рђ Р› Р Р— Рђ Р¦ Р РЇ    Р¤ РЈ Рќ Рљ Р¦ Р Р™                       */
 /***************************************************************************************/
-void errors(int er){            //определение типа ошибок
+
+void errors(int er){ //РІРµСЂСЃРёСЏ РЅР° Р°РЅРіР»РёР№СЃРєРѕРј, РјР°Р»Рѕ Р»Рё
     switch (er){
         case 1:
-            cout<<"Ошибка времени самолета ";
+            cout << "Error: Invalid flight time - ";
             break;
         case 2:
-            cout<<"Ошибка бортового номера самолета ";
+            cout << "Error: Invalid tail number - ";
             break;
         case 3:
-            cout<<"Ошибка марки самолета ";
+            cout << "Error: Invalid aircraft model - ";
             break;
         case 4:
-            cout<<"Ошибка АП самолета ";
+            cout << "Error: Invalid airfield number - ";
             break;
         case 5:
-            cout<<"Ошибка: не удалось открыть файл";
+            cout << "Error: Cannot open file - ";
             break;
         case 6:
-            cout<<"Ошибка: одинаковый борт с разной моделью ";
+            cout << "Error: Duplicate tail number with different model - ";
             break;
     }
 }
@@ -104,7 +103,7 @@ bool isUniqueNumber(aircraft* temp, int count, const string& number, const strin
     }
     return true;
 }
-bool isValidTime(const string&time){ //проверка времени
+bool isValidTime(const string&time){ //РїСЂРѕРІРµСЂРєР° РІСЂРµРјРµРЅРё
     if (time.length()!=5 ||time[2]!=':'){
         errors(1);
         return false;
@@ -170,7 +169,7 @@ int openfile(aircraft*& planes) {
     ifstream file(FILENAME);
     if (!file.is_open()) {
         errors(5);
-        cout << " Файл: " << FILENAME << endl;
+        cout << " File: " << FILENAME << endl;
         return 0;
     }
     
@@ -186,18 +185,18 @@ int openfile(aircraft*& planes) {
         ss >> a.model >> a.number >> a.time >> a.airfield;
         
         if (ss.fail()) {
-            cout<<"Ошибка чтения строки: "<<line<<endl;
+            cout<<"Error reading line: "<<line<<endl;
             continue;
         }
         
-        // Проверяем и при ошибке выводим всю строку
+        // РџСЂРѕРІРµСЂСЏРµРј Рё РїСЂРё РѕС€РёР±РєРµ РІС‹РІРѕРґРёРј РІСЃСЋ СЃС‚СЂРѕРєСѓ
         if (!isValidModel(a.model) || !isValidNumber(a.number) || 
             !isValidTime(a.time) || !isValidAirfield(a.airfield)) {
-            cout<<"в строке: "<<line<<endl;
+            cout<<"in line: "<<line<<endl;
             continue;
         }
         if (!isUniqueNumber(temp, count, a.number, a.model)) {
-            cout<<"в строке: "<<line<<endl;
+            cout<<"in line: "<<line<<endl;
             continue;
         }
         
@@ -233,8 +232,8 @@ void sorted(aircraft * planes,int count, int* ind){
 }
 void printTable(aircraft* planes, int count,int* ind){
     for(int i = 1; i<=3;i++){
-        cout<<"\t\t\t\t\t\tАЭРОДРОМ "<<i<<"\n";
-        cout<<"МАРКА\tБорт\tВремя\n";
+        cout << "\t\t\t\t\t\tAIRFIELD " << i << "\n";
+        cout << "MODEL\tNUMBER\tTIME\n";
         for(int j = 0;j<count;j+=1){
             int id=ind[j];
             if (planes[id].airfield == i) cout<<planes[id].model<<"\t"<<planes[id].number<<"\t"<<planes[id].time<<endl;
